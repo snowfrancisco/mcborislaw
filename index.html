@@ -6,11 +6,7 @@
   <title>MC BORISLAW</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Roboto', sans-serif;
       background: #000;
@@ -19,7 +15,7 @@
     }
     header {
       background: url('images/background.jpg') no-repeat center center/cover;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -27,13 +23,8 @@
       text-align: center;
       padding: 2rem;
     }
-    header h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
-    header p {
-      font-size: 1.2rem;
-    }
+    header h1 { font-size: 4rem; margin-bottom: 1rem; }
+    header p { font-size: 1.2rem; }
     .btn {
       margin-top: 2rem;
       padding: 1rem 2rem;
@@ -42,6 +33,7 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 5px;
+      cursor: pointer;
     }
     .section {
       padding: 4rem 2rem;
@@ -49,15 +41,14 @@
       margin: 0 auto;
       text-align: center;
     }
-    .section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
+    .section h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+    .highlight-tour {
+      animation: flash-bg 1s ease-in-out;
     }
-    .social-links a {
-      margin: 0 1rem;
-      color: #fff;
-      font-size: 2rem;
-      text-decoration: none;
+    @keyframes flash-bg {
+      0% { background-color: #222; }
+      50% { background-color: #444; }
+      100% { background-color: transparent; }
     }
     footer {
       text-align: center;
@@ -71,7 +62,7 @@
   <header>
     <h1>MC BORISLAW</h1>
     <p>Рэп с привкусом тьмы. Психоделический реализм. Underground навсегда.</p>
-    <a href="#tour" class="btn">АФИША</a>
+    <a href="#tour" class="btn" onclick="scrollToTour(event)">АФИША</a>
   </header>
 
   <section class="section" id="about">
@@ -81,36 +72,45 @@
 
   <section class="section" id="tour">
     <h2>Ближайшие концерты</h2>
-    <p>📍 10 августа — Москва, клуб «Точка»<br>
-       📍 24 августа — Санкт-Петербург, клуб «Зал ожидания»<br>
-       📍 7 сентября — Казань, «Бар Сцена»</p>
+    <p>📍 26 апреля — Чернобыль, бар «100 рентген»<br>
+       📍 17 июля — Санкт-Петербург, бар «Пир ДУХА»<br>
+       📍 7 сентября — Владивосток, бар «Ozzy Bar»</p>
   </section>
 
   <section class="section" id="music">
-  <h2>Слушать</h2>
-  <div class="music-links">
-    <a href="https://vk.com/artist/mcborislaw" target="_blank">VK Музыка</a><br>
-    <a href="https://music.yandex.ru/artist/17253908" target="_blank">Yandex Music</a><br>
-    <a href="https://zvuk.com/artist/212055324" target="_blank">Звук</a><br>
-    <a href="https://music.mts.ru/artist/17253908" target="_blank">МТС Музыка</a><br>
-    <a href="https://open.spotify.com/artist/1XA1UywZtJxmZfM9sSogCI" target="_blank">Spotify</a><br>
-    <a href="https://music.apple.com/us/artist/mc-borislaw/1640029147" target="_blank">Apple Music</a>
-  </div>
-</section>
+    <h2>Слушать</h2>
+    <p>
+      <a href="https://vk.com/artist/mcborislaw" target="_blank">VK Музыка</a><br>
+      <a href="https://music.yandex.ru/artist/17253908" target="_blank">Yandex Music</a><br>
+      <a href="https://zvuk.com/artist/212055324" target="_blank">Звук</a><br>
+      <a href="https://music.mts.ru/artist/17253908" target="_blank">МТС Музыка</a><br>
+      <a href="https://open.spotify.com/artist/1XA1UywZtJxmZfM9sSogCI" target="_blank">Spotify</a><br>
+      <a href="https://music.apple.com/us/artist/mc-borislaw/1640029147" target="_blank">Apple Music</a>
+    </p>
+  </section>
 
   <section class="section" id="contacts">
     <h2>Контакты</h2>
-    <p>Для бронирования концертов и сотрудничества: <br>
-      <a href="mailto:booking@mcborislaw.com">booking@mcborislaw.com</a></p>
+    <p>Менеджер артиста: <a href="mailto:zoccolov@vk.com">zoccolov@vk.com</a></p>
     <div class="social-links">
-      <a href="https://instagram.com">📷</a>
-      <a href="https://t.me">📨</a>
-      <a href="https://vk.com">🖤</a>
+      <a href="https://www.instagram.com/borislaw_kun/">Instagram</a> |
+      <a href="https://t.me/contrkult">Telegram</a> |
+      <a href="https://vk.com/mc.borislaw">VK</a>
     </div>
   </section>
 
   <footer>
     <p>&copy; 2025 MC BORISLAW. Все права защищены.</p>
   </footer>
+
+  <script>
+    function scrollToTour(e) {
+      e.preventDefault();
+      const section = document.getElementById('tour');
+      section.scrollIntoView({ behavior: 'smooth' });
+      section.classList.add('highlight-tour');
+      setTimeout(() => section.classList.remove('highlight-tour'), 1000);
+    }
+  </script>
 </body>
 </html>
